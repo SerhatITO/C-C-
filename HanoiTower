@@ -1,0 +1,31 @@
+#include <stdio.h>
+int say = 0;
+void transfer(int,char,char,char);
+
+int main()
+{
+	int n,devam = 1;
+	while (devam == 1)
+	{
+		printf("Welcome to the TOWER OF HANOI\n\n");
+		printf("How many disks ? ");
+		scanf("%d",&n);
+		
+		transfer(n, 'A', 'C', 'B');
+		printf("return = 1 : ");
+		scanf("%d",&devam);
+		say = 0;
+	}
+	return 0;
+}
+void transfer(int n, char from, char dest, char temp)
+{
+	if (n == 0)
+		return;
+	else
+	{
+		transfer(n-1,from,temp,dest);
+		say++;
+		transfer(n-1,temp,dest,from);
+	}	
+}
