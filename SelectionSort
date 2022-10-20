@@ -1,0 +1,21 @@
+
+#include <stdio.h>
+
+void selectionsort(int A[], int n)
+{
+	int i,temp;
+	for(i=0;i<n-1;i++)
+	{
+		int minIndis=i;
+		for(int j=i+1;j<n;j++)
+		{
+			if(A[j]<A[minIndis])
+			{
+				minIndis = j;
+			}
+		}
+		temp = A[i];
+		A[i] = A[minIndis];
+		A[minIndis] = temp;
+	}
+}
