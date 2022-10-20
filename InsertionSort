@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+void insertion_sort(int arr[],int n);
+{
+	int i,j,k,temp;
+	for(k=1;k<n;k++)
+	{
+		temp = arr[k];
+		j = k-1;
+		while(temp<arr[j] && (j>=0))
+		{
+			arr[j+1] = arr[j];
+			j--;
+		}
+		arr[j+1] = temp;
+		for(i=0;i<n;i++)
+			printf("%d\n",arr[i]);
+	}
+}
