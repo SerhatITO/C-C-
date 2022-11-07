@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct node
+{
+    int x;
+    struct node *next;
+};
+
+int main()
+{
+    int data, y=1;
+    struct node *start, *newNode, *current, *last;
+
+    start = (node *) malloc(sizeof(node));
+    start -> x = 10;
+    start -> next = NULL;
+    last = start;
+    
+    for(int y=2; y<=4; y++)
+    {
+           printf("diger datayi giriniz");
+           scanf("%d",&data);
+           newNode = (node *) malloc(sizeof(node));
+           newNode -> x = data;
+           newNode -> next = NULL;
+
+           last -> next = newNode;
+           last = newNode; 
+    }
+    current = start;
+
+    while(current != NULL)
+    {
+        current = current -> next;
+    }
+
+
+
+}
