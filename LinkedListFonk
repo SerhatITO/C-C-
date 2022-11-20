@@ -1,0 +1,86 @@
+# C-C-
+#include <stdio.h>
+#include <stdlib.h>
+
+struct n
+{
+    int x;
+    struct n *next;
+};
+typedef struct n node;
+
+void bastir(node *current)
+{
+    while(current != NULL)
+    {
+        printf("%d", current -> x);
+        current = current -> next;
+    }
+    printf("\n");
+}
+
+void ekle(node *current , int x)
+{
+    while(current -> next != NULL)
+    {
+        current = current -> next;
+    }
+    current -> next = (node*)malloc(sizeof(node));
+    current -> next -> x = x;
+    current -> next -> next = NULL;
+}
+
+node *sil(node *current, int x)
+{
+    node *temp;
+    node *iter = current;
+    if(current -> x == x)
+    {
+        temp = current;
+        current = current -> next;
+        free(temp);
+        return current;
+    }
+    while (iter -> next != NULL )
+    {
+        iter = iter -> next;
+    }
+    if(iter -> next == NULL)
+    {
+        printf("Sayi bulunamadi\n");
+        return current;
+    }
+    temp = iter -> next;
+    iter -> next = iter -> next -> next;
+    free(temp);
+    return current;
+}
+
+node * ekleSirali ( node *current, int x){
+    if( current == NULL)
+    {
+        current = (node *) malloc ( sizeof ( node) );
+        current -> next = NULL;
+        current -> x = x;
+        return current;
+    }
+    if(current -> x > x)
+    { 
+        node * temp = ( node * ) malloc ( sizeof ( node ) );
+        temp -> x = x;
+        temp -> next = current;
+        current = temp;
+        return temp;
+    }
+        node * iter = current;
+        while( iter -> next != NULL && iter -> next -> x < x )
+        {
+            iter = iter -> next;
+        }
+
+        node * temp = (node*)malloc(sizeof(node));
+        temp->next = iter->next;
+        iter->next = temp;
+        temp->x = x;
+        return current;
+}
